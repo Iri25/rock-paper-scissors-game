@@ -28,11 +28,11 @@ function playGame(playerChoice) {
   ) {
     message = `Congratulations, you won! ${capitalize(
       playerChoice
-    )} beats ${capitalize(computerChoice)}!`;
+    )} beats ${computerChoice}!`;
   } else {
     message = `Sorry, the computer won! ${capitalize(
       computerChoice
-    )} beats ${capitalize(playerChoice)}!`;
+    )} beats ${playerChoice}!`;
   }
 
   if (!message) {
