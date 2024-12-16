@@ -6,12 +6,16 @@ const scissorsButton = document.querySelector(".far.fa-hand-scissors");
 
 const optionsGame = ["rock", "paper", "scissors"];
 
+function capitalize(choice) {
+  if (typeof choice !== "string" || choice.length === 0) {
+    return "";
+  }
+  return choice[0].toUpperCase() + choice.slice(1);
+}
+
 function playGame(playerChoice) {
   const randomIndex = Math.floor(Math.random() * optionsGame.length);
   const computerChoice = optionsGame[randomIndex];
-
-  const playerChoiseCapitalize =
-    String(playerChoice[0]).toUpperCase() + String(playerChoice).slice(1);
 
   let message = "";
 
@@ -22,13 +26,13 @@ function playGame(playerChoice) {
     (playerChoice === "paper" && computerChoice === "rock") ||
     (playerChoice === "scissors" && computerChoice === "paper")
   ) {
-    message = `Congratulations, you won! ${playerChoiseCapitalize} beats ${computerChoice}!`;
-  } else if (
-    (playerChoice === "rock" && computerChoice === "paper") ||
-    (playerChoice === "paper" && computerChoice === "scissors") ||
-    (playerChoice === "scissors" && computerChoice === "rock")
-  ) {
-    message = `Sorry, the computer won! ${playerChoiseCapitalize} beats ${computerChoice}!`;
+    message = `Congratulations, you won! ${capitalize(
+      playerChoice
+    )} beats ${capitalize(computerChoice)}!`;
+  } else {
+    message = `Sorry, the computer won! ${capitalize(
+      computerChoice
+    )} beats ${capitalize(playerChoice)}!`;
   }
 
   if (!message) {
